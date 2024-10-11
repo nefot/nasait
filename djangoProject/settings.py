@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'userauth'
+
     'core',
 ]
 
@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vission',
+        'USER': 'mydatabaseuser',
+        'PASSWORD': '_Qwe1Asd2_',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
