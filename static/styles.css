@@ -293,7 +293,7 @@ footer.row.row-cols-1.row-cols-sm-2.row-cols-md-5.py-5.my-5.border-top.content {
 
 .flip-card-back img {
     width: 40%;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     height: 40%;
     object-fit: contain;
 }
@@ -346,8 +346,8 @@ body {
     display: block;
 
     background: #fff;
-    padding: 18px;
-    border-radius: 12px;
+    /*padding: 18px;*/
+    border-radius: 5px;
     text-decoration: none;
     border: 1px solid #afafaf;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
@@ -367,7 +367,7 @@ body {
     /* max-height: 239px; */
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 4px 4px 0 0;
 
 }
 
@@ -375,12 +375,12 @@ body {
     color: #000000;
     font-weight: 600;
     font-size: 1.2rem;
-
-    margin: 16px 0;
+    margin: 16px 0 0 0;
     padding: 8px 16px;
-    text-align: left;
+    text-align: -webkit-match-parent;
     width: 100%;
     border-radius: 50px;
+    white-space: normal !important;
     /*background: #DDE4FF;*/
 }
 
@@ -388,17 +388,21 @@ body {
     font-size: 1.0rem;
     /* font-weight: 300; */
     color: #252525;
+    padding: 8px 16px;
     font-weight: normal;
 }
 
 .card-list .card-link .card-button {
     height: 35px;
+    /* padding: 8px 16px; */
     /*width: 35px;*/
+    margin: auto;
+    text-align: center;
     border-radius: 5px;
     background: none;
-    margin: 30px 0 5px;
+    margin: 8px 16px;
     cursor: pointer;
-    padding: 5px;
+    /* padding: 10px; */
     border: 2px solid #5372F0;
     color: #5372F0;
     /*transform: rotate(-45deg);*/
@@ -409,6 +413,14 @@ body {
     color: #fff;
 
 }
+.card-list .card-link .card-button p {
+    position: relative;
+    display: block;
+    text-align: center;
+    margin: auto 10px;
+    padding: auto;
+}
+
 
 .container.swiper {
     display: flex;
@@ -455,3 +467,4 @@ h3.dop {
 .flip-card-front > img {
     width: 50%;
 }
+

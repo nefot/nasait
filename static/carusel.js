@@ -1,7 +1,7 @@
 const swiper = new Swiper('.card-wrapper', {
     // Optional parameters
     loop: true,
-    spaceBetween: 30,
+    spaceBetween: 15,
     // If we need pagination
     pagination: {
         el: '.swiper-pagination',
