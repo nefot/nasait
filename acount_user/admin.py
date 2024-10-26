@@ -9,3 +9,4 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'email', 'phone', 'location')
 
 
+from django.contrib import admin

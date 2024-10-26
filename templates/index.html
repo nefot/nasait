@@ -4,7 +4,8 @@
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedicalAssure</title>
+{#    <link rel="icon" href="{{ site_settings.logo.url }}{{ site_settings.site_name }}" type="image/x-icon">#}
+    <title>{{ site_settings.site_name }}</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link rel="stylesheet"
@@ -19,8 +20,8 @@
 <!-- Main Section -->
 <section class="main-section d-flex text-center">
     <div class="text-content">
-        <h1>Какой то текст<br>Что то там</h1>
-        <p class="lead">Overcame any hurdle or any other problem.</p>
+        <h1>{{ site_settings.main_title }}</h1>
+        <p class="lead">{{ site_settings.subtitle }}</p>
     </div>
     <div class="grid-container">
         <div class="grid-item flip-card">
