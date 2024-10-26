@@ -1,0 +1,42 @@
+{% load static %}
+
+{% block carusel %}
+    <div class="simple">
+        <!--<div class="simple">-->
+        <div class="container swiper">
+            <div class="card-wrapper">
+                <div class="cardx">  
+                <p>Анонсы</p>
+                    <a href="#"> показать все</a>
+                </div>
+            
+                <ul class="card-list swiper-wrapper">
+                    {% for announcement in announcements %}
+
+                        <li class="card-item swiper-slide">
+                            <a href="#" class="card-link">
+                                <img src="{{ announcement.image.url }}" alt=""
+                                     class="card-image">
+                                <p class="badge">{{ announcement.title }}</p>
+                                <h2 class="card-title">
+                                    {{ announcement.title }}
+                                    <p></p>
+                                  
+
+                                </h2>
+                                  <button class=" card-button ">
+                                        подробнее
+                                    </button>
+                            </a>
+                        </li>
+
+                    {% endfor %}
+                </ul>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

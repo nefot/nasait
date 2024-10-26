@@ -1,0 +1,46 @@
+{% block header %}
+    <header class="ds">
+        <div class="logo">MedicalAssure</div>
+        <nav>
+          <ul>
+    <li>
+        {% url 'home' as home_url %}
+        <a href="{{ home_url }}" class="{% if request.path == home_url %}--current{% endif %}">Главная</a>
+    </li>
+    <li>
+        {% url 'specialists' as specialists_url %}
+        <a href="{{ specialists_url }}" class="{% if request.path == specialists_url %}--current{% endif %}">Специалисты</a>
+    </li>
+    <li>
+        {% url 'organizations' as organizations_url %}
+        <a href="{{ organizations_url }}" class="{% if request.path == organizations_url %}--current{% endif %}">Организации</a>
+    </li>
+    <li>
+        {% url 'reference_materials' as reference_materials_url %}
+        <a href="{{ reference_materials_url }}" class="{% if request.path == reference_materials_url %}--current{% endif %}">Справочные материалы</a>
+    </li>
+    <li>
+        {% url 'legal_framework' as legal_framework_url %}
+        <a href="{{ legal_framework_url }}" class="{% if request.path == legal_framework_url %}--current{% endif %}">Нормативно-правовая база</a>
+    </li>
+</ul>
+
+
+
+            <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px"
+                data-bs-theme="light">
+                <li><a class="dropdown-item rounded-2 active" href="#">Action</a></li>
+                <li><a class="dropdown-item rounded-2" href="#">Another action</a></li>
+                <li><a class="dropdown-item rounded-2" href="#">Something else here</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item rounded-2" href="#">Separated link</a></li>
+            </ul>
+        </nav>
+        <div class="auth">
+            {#        <a href="{% url 'admin:index' %}" class="login">Вход</a>#}
+            <a href="{% url 'admin:index' %}" class="register btn btn-success ">Вход</a>
+        </div>
+    </header>
+{% endblock %} 
