@@ -71,7 +71,7 @@ class SiteSettings(models.Model):
     subtitle = models.CharField(max_length=100)
     block1_name = models.CharField(max_length=100)
     block2_name = models.CharField(max_length=100)
-    block3_name = models.CharField(max_length=100)
+    block3_name = models.CharField(max_length=99)
     site_name = models.CharField(max_length=255, verbose_name="Название сайта")
     logo = models.ImageField(upload_to='settings/', blank=True, null=True, verbose_name="Логотип")
     contact_email = models.EmailField(blank=True, null=True, verbose_name="Контактный email")
