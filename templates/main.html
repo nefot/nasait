@@ -1,10 +1,10 @@
 {% load static %}
-<html lang="ru">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedicalAssure</title>
+    <title>{{ site_settings.site_name }}</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link rel="stylesheet"
@@ -14,10 +14,13 @@
 
 </head>
 {% include 'header.html' %}
+
 <body>
 {% block content %}{% endblock %}
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script src="{% static 'carusel.js' %}"></script>
 </body>
-</html>
+
+
+{% include 'footer.html' %}

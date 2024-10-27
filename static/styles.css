@@ -387,6 +387,8 @@ body {
 .card-list .card-link .card-title {
     font-size: 1.0rem;
     /* font-weight: 300; */
+    width: 100%;
+     white-space: normal !important;
     color: #252525;
     padding: 8px 16px;
     font-weight: normal;

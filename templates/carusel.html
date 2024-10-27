@@ -1,4 +1,6 @@
 {% load static %}
+{% load text_filters  %}
+
 
 {% block carusel %}
     <div class="simple">
@@ -19,7 +21,7 @@
                                      class="card-image">
                                 <p class="badge">{{ announcement.title }}</p>
                                 <h2 class="card-title">
-                                    {{ announcement.title }}
+                                    {{ announcement.description|truncate_text:150 }}
                                     <p></p>
                                   
 
