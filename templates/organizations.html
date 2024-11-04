@@ -1,1 +1,56 @@
-{% include 'main.html' %}
+{% extends 'main.html' %}
+
+{% block content %}
+    <div class="content">
+        <div class="supercontent">
+            <ul class="cpec_content">
+                {% for subsection in subsections %}
+                    <li class="cpec_item {% if forloop.first %}-current{% endif %}">
+                        <a href="javascript:void(0);" onclick="showContent({{ subsection.id }}, this)">
+                            {{ subsection.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="content-block">
+                {% for subsection in subsections %}
+                    <div id="content-{{ subsection.id }}" class="content-item" style="{% if forloop.first %}display: block;{% else %}display: none;{% endif %};">
+                        {{ subsection.content|safe }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showContent(id, element) {
+            // Скрываем все блоки с контентом
+            document.querySelectorAll('.content-item').forEach(item => {
+                item.style.display = 'none';
+            });
+
+            // Показываем выбранный блок
+            const contentDiv = document.getElementById(`content-${id}`);
+            if (contentDiv) {
+                contentDiv.style.display = 'block';
+            }
+
+            // Убираем класс -current у всех элементов
+            document.querySelectorAll('.cpec_item').forEach(item => {
+                item.classList.remove('-current');
+            });
+
+            // Добавляем класс -current к текущему элементу
+            element.parentElement.classList.add('-current');
+        }
+
+        // Устанавливаем выбранный элемент по умолчанию при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstItem = document.querySelector('.cpec_item');
+            if (firstItem) {
+                showContent({{ subsections.0.id }}, firstItem.querySelector('a'));
+            }
+        });
+    </script>
+{% endblock %}

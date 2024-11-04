@@ -1,5 +1,7 @@
 from django.db import models
 from django.db import models
+from django_ckeditor_5.fields import CKEditor5Field
+from django.db import models
 
 
 class SingletonModel(models.Model):
@@ -61,6 +63,57 @@ class Events(models.Model):
 
 
 
+
+
+# class Section(models.Model):
+#     title = models.CharField(max_length=255, verbose_name="Название раздела")
+#     published = models.BooleanField(default=False, verbose_name="Опубликовано?")
+#
+#     def __str__(self):
+#         return self.title
+
+class SubSection(models.Model):
+    section = models.IntegerField()
+    title = models.CharField(max_length=255, verbose_name="Название подраздела")
+    content = CKEditor5Field( verbose_name='Содержание', config_name='extends')  # Поле для содержимого с CKEditor
+    published = models.BooleanField(default=False, verbose_name="Опубликовано?")
+
+    def __str__(self):
+        return f"{self.title} - {self.title}"
+
+    class Meta:
+        verbose_name = "Специалистам"
+        verbose_name_plural = "Специалистам"
+
+
+class Organization(SubSection):
+
+    def __str__(self):
+        return f"{self.title} - {self.title}"
+
+    class Meta:
+        verbose_name = "Организации"
+        verbose_name_plural = "Организации"
+
+
+class Materials(SubSection):
+
+    def __str__(self):
+        return f"{self.title} - {self.title}"
+
+    class Meta:
+        verbose_name = "Справочные материалы"
+        verbose_name_plural = "Справочные материалы"
+
+
+class Base(SubSection):
+
+    def __str__(self):
+        return f"{self.title} - {self.title}"
+
+    class Meta:
+        verbose_name = "Нормативно правовая база"
+        verbose_name_plural = "Нормативно правовая база"
 
 
 
