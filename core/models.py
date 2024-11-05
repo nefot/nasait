@@ -1,6 +1,11 @@
+from tkinter.constants import CASCADE
+
 from django.db import models
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
+from django.db import models
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
 
@@ -18,6 +23,7 @@ class SingletonModel(models.Model):
             return cls.objects.get()
         except cls.DoesNotExist:
             return cls()
+
 
 class Announcement(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
@@ -47,7 +53,6 @@ class News(models.Model):
         return self.title
 
 
-
 class Events(models.Model):
     title = models.CharField(max_length=200, verbose_name="Заголовок")
     description = models.TextField(verbose_name="Описание")
@@ -62,9 +67,6 @@ class Events(models.Model):
         return self.title
 
 
-
-
-
 # class Section(models.Model):
 #     title = models.CharField(max_length=255, verbose_name="Название раздела")
 #     published = models.BooleanField(default=False, verbose_name="Опубликовано?")
@@ -72,10 +74,28 @@ class Events(models.Model):
 #     def __str__(self):
 #         return self.title
 
+class Files(models.Model):
+    # Эти два поля нужны для GenericForeignKey
+    subsection_type = models.ManyToManyField(ContentType, on_delete=models.CASCADE)
+    subsection_id = models.PositiveIntegerField()
+    subsection = GenericForeignKey('subsection_type', 'subsection_id')
+
+    title = models.CharField(max_length=255, verbose_name="Название файла")
+    content = models.FileField(verbose_name='Содержание', upload_to='uploads/')
+    published = models.BooleanField(default=False, verbose_name="Опубликовано?")
+
+    def __str__(self):
+        return f"{self.title}"
+
+    class Meta:
+        verbose_name = "Файл"
+        verbose_name_plural = "Файлы"
+
+
 class SubSection(models.Model):
     section = models.IntegerField()
     title = models.CharField(max_length=255, verbose_name="Название подраздела")
-    content = CKEditor5Field( verbose_name='Содержание', config_name='extends')  # Поле для содержимого с CKEditor
+    content = CKEditor5Field(verbose_name='Содержание', config_name='extends')  # Поле для содержимого с CKEditor
     published = models.BooleanField(default=False, verbose_name="Опубликовано?")
 
     def __str__(self):
@@ -116,9 +136,6 @@ class Base(SubSection):
         verbose_name_plural = "Нормативно правовая база"
 
 
-
-
-
 class SiteSettings(models.Model):
     main_title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=100)
@@ -133,7 +150,6 @@ class SiteSettings(models.Model):
     facebook_link = models.URLField(blank=True, null=True, verbose_name="Facebook")
     twitter_link = models.URLField(blank=True, null=True, verbose_name="Twitter")
     instagram_link = models.URLField(blank=True, null=True, verbose_name="Instagram")
-
 
     class Meta:
         verbose_name = "Настройки сайта"

@@ -1,4 +1,6 @@
 # news/admin.py
+from email._header_value_parser import Section
+
 from celery.app.events import Events
 from django.contrib import admin
 from .models import *
@@ -23,26 +25,37 @@ class SubSectionInline(admin.StackedInline):  # или TabularInline для ко
 #         }),
 #     )
 
-@admin.register(SubSection)
-class SubSectionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'section', 'published']
-    list_filter = ['section', 'published']
+from django.contrib import admin
+from django.contrib.contenttypes.admin import GenericTabularInline
 
+class FilesInline(GenericTabularInline):
+    model = Files
+    extra = 1
+
+@admin.register(SubSection)
+class SectionAdmin(admin.ModelAdmin):
+    inlines = [FilesInline]
 
 @admin.register(Organization)
-class SubSectionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'section', 'published']
-    list_filter = ['section', 'published']
+class OrganizationAdmin(admin.ModelAdmin):
+    inlines = [FilesInline]
 
 @admin.register(Materials)
-class SubSectionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'section', 'published']
-    list_filter = ['section', 'published']
+class MaterialsAdmin(admin.ModelAdmin):
+    inlines = [FilesInline]
 
 @admin.register(Base)
-class SubSectionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'section', 'published']
-    list_filter = ['section', 'published']
+class BaseAdmin(admin.ModelAdmin):
+    inlines = [FilesInline]
+
+# Регистрируем саму модель Files без inline
+@admin.register(Files)
+class FilesAdmin(admin.ModelAdmin):
+    list_display = ('title', 'subsection', 'published')
+    list_filter = ('published',)
+    search_fields = ('title',)
+
+
 
 @admin.register(Announcement)
 class AnnouncementAdmin(admin.ModelAdmin):
