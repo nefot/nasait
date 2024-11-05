@@ -76,7 +76,7 @@ class Events(models.Model):
 
 class Files(models.Model):
     # Эти два поля нужны для GenericForeignKey
-    subsection_type = models.ManyToManyField(ContentType, on_delete=models.CASCADE)
+    subsection_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     subsection_id = models.PositiveIntegerField()
     subsection = GenericForeignKey('subsection_type', 'subsection_id')
 
