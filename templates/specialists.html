@@ -14,8 +14,11 @@
             </ul>
 
             <div class="content-block">
+
                 {% for subsection in subsections %}
+
                     <div id="content-{{ subsection.id }}" class="content-item" style="{% if forloop.first %}display: block;{% else %}display: none;{% endif %};">
+        <p style="letter-spacing: 2px; text-transform: lowercase"><a href="{{ specialists_url }}">Специалисты</a> > {{ subsection.title }}</p>
                         {{ subsection.content|safe }}
                     </div>
                 {% endfor %}
@@ -46,7 +49,7 @@
         }
 
         // Устанавливаем выбранный элемент по умолчанию при загрузке
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const firstItem = document.querySelector('.cpec_item');
             if (firstItem) {
                 showContent({{ subsections.0.id }}, firstItem.querySelector('a'));

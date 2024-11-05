@@ -99,7 +99,7 @@ nav ul li a:hover {
     align-items: center;
     justify-content: space-between;
     padding: 50px 10%;
-    background-color:var(--secondary-color);
+    background-color: var(--secondary-color);
     color: white;
     top: 0;
     text-align: center;
@@ -315,7 +315,7 @@ footer.row.row-cols-1.row-cols-sm-2.row-cols-md-5.py-5.my-5.border-top.content {
 .--current {
     font-weight: bold;
     color: var(--accent-color); /* Выделите цветом или другим стилем */
-    border-bottom: 2px solid  var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
 }
 
 
@@ -370,7 +370,7 @@ body {
 }
 
 .card-list .card-item .card-link:hover {
-    border-color:var(--secondary-color);
+    border-color: var(--secondary-color);
 }
 
 
@@ -420,12 +420,12 @@ body {
     cursor: pointer;
     /* padding: 10px; */
     border: 2px solid var(--secondary-color);
-    color:var(--secondary-color);
+    color: var(--secondary-color);
     /*transform: rotate(-45deg);*/
 }
 
 .card-list .card-link:hover .card-button {
-    background:var(--secondary-color);
+    background: var(--secondary-color);
     color: var(--background-color);
 
 }
@@ -504,6 +504,7 @@ h3.dop {
 
 ul.cpec_content {
     background-color: #f0f8ff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
 }
 
 footer.row.row-cols-1.row-cols-sm-2.row-cols-md-5.py-5.my-5.border-top.content {
@@ -541,19 +542,30 @@ li.cpec_item > a {
 }
 
 li.cpec_item {
+    letter-spacing: 1;
     background-color: #f0f8ff;
+    font-size: small;
+    text-transform: uppercase;
     /* border: solid; */
     border-bottom: solid 1px #abb5be;
     border-image: linear-gradient(to left, #eadede, #90acaa, #6A9393, #ffffff) 14% 0;
+    /* transition: background-color 1s; */
+    /* transition: background-color cubic-bezier(0, 0, 0.2, 1) .5s; */
 }
 
 li.cpec_item:hover {
     background-color: #c7d0d9;
+    transition: background-color cubic-bezier(0, 0, 0.2, 1) .5s;
 }
 
 li.cpec_item.-current {
     background-color: #ff5b5b;
+    /* margin-bottom: 391px; */
+    box-shadow: 0 10px 10px 0px rgb(212 212 212 / 70%);
+    /* z-index: 100; */
     color: white;
+    /* position: absolute; */
+    transition: background-color .2s;
 }
 
 li.cpec_item.-current > a {
@@ -572,7 +584,8 @@ li.vk {
     margin: 0 49px;
 }
 
-a.--current {}
+a.--current {
+}
 
 a:hover {
     content: ' ' !important;
@@ -592,18 +605,16 @@ li.cpec_item > a:hover {
 
 a.--current:hover {
     background-size: 0;
-    color: var(--accent-color)!important;
+    color: var(--accent-color) !important;
 }
-
-
 
 
 .content-block {
     /* display: flex; */
     padding: 60px;
     width: 67%;
-    margin: auto;
-    align-items: center;
+    /* margin: auto; */
+    align-items: flex-start;
     justify-content: flex-start;
 }
 
@@ -612,4 +623,34 @@ figure.image > img {
     width: auto;
 }
 
-img {}
+img {
+}
+
+li.cpec_item:first-child {
+    /* margin-top: 392px; */
+    /* transition: color 1s; */
+}
+
+li.cpec_item:active {
+    box-shadow: inset -1px 6px 10px 0px rgb(0 0 0 / 9%);
+}
+
+li.cpec_item.-current > a {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+a {
+}
+
+.content-block {
+}
+
+.content-block > .content-item > p > a {
+    /*text-decoration: underline !important;*/
+    color: blue !important;
+}
+
+.content-block > .content-item > p > a :hover {
+    text-decoration: underline !important;
+}

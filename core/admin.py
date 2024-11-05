@@ -80,3 +80,35 @@ class EventsAdmin(admin.ModelAdmin):
             'fields': ('title', 'description', 'image')
         }),
     )
+
+@admin.register(SiteSettings)
+class SiteSettingsAdmin(admin.ModelAdmin):
+    # Отображаем поля в списке записей
+    list_display = ('site_name', 'main_title', 'contact_email', 'phone_number')
+    search_fields = ('site_name', 'contact_email')
+
+    # Настраиваем группировку полей в админке
+    fieldsets = (
+        ("Основные настройки", {
+            'fields': ('site_name', 'main_title', 'subtitle', 'logo')
+        }),
+        ("Блоки контента", {
+            'fields': ('block1_name', 'block2_name', 'block3_name')
+        }),
+        ("Контактная информация", {
+            'fields': ('contact_email', 'phone_number', 'address')
+        }),
+        ("Социальные сети", {
+            'fields': ('facebook_link', 'twitter_link', 'instagram_link')
+        }),
+    )
+
+    # Отключаем возможность добавления нескольких экземпляров SiteSettings
+    def has_add_permission(self, request):
+        # Разрешаем добавлять запись, если еще нет ни одной
+        return not SiteSettings.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        # Отключаем возможность удаления
+        return False
+
