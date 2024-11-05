@@ -654,3 +654,6 @@ a {
 .content-block > .content-item > p > a :hover {
     text-decoration: underline !important;
 }
+p.lead {
+    text-align: left !important;
+}

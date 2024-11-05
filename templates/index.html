@@ -21,8 +21,8 @@
 <!-- Main Section -->
 <section class="main-section d-flex text-center">
     <div class="text-content">
-        <h1>{{ site_settings.main_title }}</h1>
-        <p class="lead">{{ site_settings.subtitle }}</p>
+        <h1>{{ site_settings.main_title|safe }}</h1>
+        <p class="lead">{{ site_settings.subtitle|safe }}</p>
     </div>
     <div class="grid-container">
         <div class="grid-item flip-card">
