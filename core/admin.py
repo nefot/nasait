@@ -6,31 +6,16 @@ from django.contrib import admin
 from .models import *
 from django.contrib import admin
 
-
-class SubSectionInline(admin.StackedInline):  # или TabularInline для компактного отображения
-    model = SubSection
-    extra = 1  # Количество пустых полей для новых подразделов
-    fields = ['title', 'content', 'published']
-    verbose_name = "Подраздел"
-    verbose_name_plural = "Подразделы"
-
-# @admin.register(Section)
-# class SectionAdmin(admin.ModelAdmin):
-#     list_display = ['title', 'published']
-#     inlines = [SubSectionInline]  # Встраиваем SubSection в Section
-#
-#     fieldsets = (
-#         (None, {
-#             'fields': ('title', 'published'),
-#         }),
-#     )
-
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 
+
 class FilesInline(GenericTabularInline):
     model = Files
+    ct_field = "subsection_type"  # Поле для типа контента
+    ct_fk_field = "subsection_id" # Поле для ID связанного объекта
     extra = 1
+
 
 @admin.register(SubSection)
 class SectionAdmin(admin.ModelAdmin):
@@ -51,11 +36,9 @@ class BaseAdmin(admin.ModelAdmin):
 # Регистрируем саму модель Files без inline
 @admin.register(Files)
 class FilesAdmin(admin.ModelAdmin):
-    list_display = ('title', 'subsection', 'published')
+    list_display = ('title', 'published')
     list_filter = ('published',)
     search_fields = ('title',)
-
-
 
 @admin.register(Announcement)
 class AnnouncementAdmin(admin.ModelAdmin):
