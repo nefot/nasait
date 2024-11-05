@@ -102,38 +102,50 @@ class SubSection(models.Model):
         return f"{self.title} - {self.title}"
 
     class Meta:
+        verbose_name = "SubSection"
+        verbose_name_plural = "SubSection"
+
+
+class Organization(models.Model):
+    section = models.IntegerField()
+    title = models.CharField(max_length=255, verbose_name="Название подраздела")
+    content = CKEditor5Field(verbose_name='Содержание', config_name='extends')  # Поле для содержимого с CKEditor
+    published = models.BooleanField(default=False, verbose_name="Опубликовано?")
+
+    def __str__(self):
+        return f"{self.title} - {self.title}"
+
+    class Meta:
+        verbose_name = "Organization"
+        verbose_name_plural = "Organization"
+
+
+class Materials(models.Model):
+    section = models.IntegerField()
+    title = models.CharField(max_length=255, verbose_name="Название подраздела")
+    content = CKEditor5Field(verbose_name='Содержание', config_name='extends')  # Поле для содержимого с CKEditor
+    published = models.BooleanField(default=False, verbose_name="Опубликовано?")
+
+    def __str__(self):
+        return f"{self.title} - {self.title}"
+
+    class Meta:
+        verbose_name = "Materials"
+        verbose_name_plural = "Materials"
+
+
+class Base(models.Model):
+    section = models.IntegerField()
+    title = models.CharField(max_length=255, verbose_name="Название подраздела")
+    content = CKEditor5Field(verbose_name='Содержание', config_name='extends')  # Поле для содержимого с CKEditor
+    published = models.BooleanField(default=False, verbose_name="Опубликовано?")
+
+    def __str__(self):
+        return f"{self.title} - {self.title}"
+
+    class Meta:
         verbose_name = "Специалистам"
         verbose_name_plural = "Специалистам"
-
-
-class Organization(SubSection):
-
-    def __str__(self):
-        return f"{self.title} - {self.title}"
-
-    class Meta:
-        verbose_name = "Организации"
-        verbose_name_plural = "Организации"
-
-
-class Materials(SubSection):
-
-    def __str__(self):
-        return f"{self.title} - {self.title}"
-
-    class Meta:
-        verbose_name = "Справочные материалы"
-        verbose_name_plural = "Справочные материалы"
-
-
-class Base(SubSection):
-
-    def __str__(self):
-        return f"{self.title} - {self.title}"
-
-    class Meta:
-        verbose_name = "Нормативно правовая база"
-        verbose_name_plural = "Нормативно правовая база"
 
 
 class SiteSettings(models.Model):
