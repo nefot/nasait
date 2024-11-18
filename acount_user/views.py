@@ -30,14 +30,13 @@ def home(request):
 
 
 
-
 def specialists(request):
     subsections = SubSection.objects.filter(published=True).order_by('section')
 
-    # Подгружаем файлы для каждого подраздела
+    # Привязка файлов к каждому подразделу
     for subsection in subsections:
         subsection.files = Files.objects.filter(
-            subsection_type=ContentType.objects.get_for_model(subsection),
+            subsection_type=ContentType.objects.get_for_model(SubSection),
             subsection_id=subsection.id,
             published=True
         )
@@ -51,9 +50,10 @@ def specialists(request):
 def organisation(request):
     subsections = Organization.objects.filter(published=True).order_by('section')
 
+    # Привязка файлов к каждому подразделу
     for subsection in subsections:
         subsection.files = Files.objects.filter(
-            subsection_type=ContentType.objects.get_for_model(subsection),
+            subsection_type=ContentType.objects.get_for_model(Organization),
             subsection_id=subsection.id,
             published=True
         )
@@ -67,9 +67,10 @@ def organisation(request):
 def legal_framework(request):
     subsections = Base.objects.filter(published=True).order_by('section')
 
+    # Привязка файлов к каждому подразделу
     for subsection in subsections:
         subsection.files = Files.objects.filter(
-            subsection_type=ContentType.objects.get_for_model(subsection),
+            subsection_type=ContentType.objects.get_for_model(Base),
             subsection_id=subsection.id,
             published=True
         )
@@ -83,9 +84,10 @@ def legal_framework(request):
 def reference_materials(request):
     subsections = Materials.objects.filter(published=True).order_by('section')
 
+    # Привязка файлов к каждому подразделу
     for subsection in subsections:
         subsection.files = Files.objects.filter(
-            subsection_type=ContentType.objects.get_for_model(subsection),
+            subsection_type=ContentType.objects.get_for_model(Materials),
             subsection_id=subsection.id,
             published=True
         )

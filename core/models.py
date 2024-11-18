@@ -103,6 +103,19 @@ class SubSection(models.Model):
         return self.title
 
 
+class Announcement(models.Model):
+    title = models.CharField(max_length=255, verbose_name="Заголовок", help_text="Основной заголовок анонса. Будет отображаться на сайте.")
+    description = models.TextField(verbose_name="Описание", help_text="Полное описание анонса, содержащее все основные сведения.")
+    image = models.ImageField(upload_to='announcements/', null=True, blank=True, verbose_name="Изображение", help_text="Загрузите изображение, которое будет представлять анонс.")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания", help_text="Дата и время, когда анонс был создан.")
+
+    class Meta:
+        verbose_name = "Анонс"
+        verbose_name_plural = "Анонсы"
+
+    def __str__(self):
+        return self.title
+
 class Organization(models.Model):
     section = models.IntegerField(verbose_name="Раздел", help_text="Номер раздела, к которому относится организация.")
     title = models.CharField(max_length=255, verbose_name="Название подраздела", help_text="Название подраздела с информацией об организации.")

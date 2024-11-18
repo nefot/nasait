@@ -17,27 +17,28 @@
                 {% for subsection in subsections %}
                     <div id="content-{{ subsection.id }}" class="content-item"
                          style="{% if forloop.first %}display: block;{% else %}display: none;{% endif %};">
-                        <p style="letter-spacing: 2px; text-transform: lowercase"><a href="{{ specialists_url }}">Для
-                            аккредитации</a> > {{ subsection.title }}</p>
+                        <p style="letter-spacing: 2px; text-transform: lowercase">
+                            <a href="{{ specialists_url }}">Для аккредитации</a> > {{ subsection.title }}
+                        </p>
 
+                        <!-- Контент подраздела -->
                         {{ subsection.content|safe }}
+
+                        <!-- Связанные файлы, если они есть -->
+                        {% if subsection.files %}
+                            <h3>Связанные файлы:</h3>
+                            <ul>
+                                {% for file in subsection.files %}
+                                    <li>
+                                        <a href="{{ file.content.url }}" target="_blank">
+                                            {{ file.title }}.{{ file.get_extension|slice:"1:" }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
                 {% endfor %}
-                {% for subsection in subsections %}
-
-                    {% if subsection.files %}
-                        <h3>Связанные файлы:</h3>
-                        <ul>
-                            {% for file in subsection.files %}
-                                
-                                   <a href="{{ file.content.url }}" target="_blank">{{ file.title }}.{{ file.get_extension|slice:"1:" }}</a>
-                                
-                                
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                {% endfor %}
-
             </div>
         </div>
     </div>

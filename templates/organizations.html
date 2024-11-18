@@ -19,22 +19,21 @@
                             <p style="letter-spacing: 2px; text-transform: lowercase"><a href="{{ specialists_url }}">Организации</a> > {{ subsection.title }}</p>
 
                         {{ subsection.content|safe }}
-                    </div>
-                {% endfor %}
-             {% for subsection in subsections %}
-
-                    {% if subsection.files %}
+                     {% if subsection.files.exists %}
                         <h3>Связанные файлы:</h3>
                         <ul>
                             {% for file in subsection.files %}
-                                
-                                   <a href="{{ file.content.url }}" target="_blank">{{ file.title }}.{{ file.get_extension|slice:"1:" }}</a>
-                                
-                                
+                                <li>
+                                      <a href="{{ file.content.url }}"
+                                   target="_blank">{{ file.title }}.{{ file.get_extension|slice:"1:" }}</a>
+                                </li>
                             {% endfor %}
                         </ul>
                     {% endif %}
+                    </div>
+                   
                 {% endfor %}
+            
             </div>
         </div>
     </div>

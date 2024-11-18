@@ -34,11 +34,11 @@ class BaseAdmin(admin.ModelAdmin):
     inlines = [FilesInline]
 
 # Регистрируем саму модель Files без inline
-@admin.register(Files)
-class FilesAdmin(admin.ModelAdmin):
-    list_display = ('id','title', 'published')
-    list_filter = ('published',)
-    search_fields = ('title',)
+# @admin.register(Files)
+# class FilesAdmin(admin.ModelAdmin):
+#     list_display = ('id','title', 'published')
+#     list_filter = ('published',)
+#     search_fields = ('title',)
 
 @admin.register(Announcement)
 class AnnouncementAdmin(admin.ModelAdmin):
