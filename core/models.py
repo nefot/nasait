@@ -74,7 +74,7 @@ class Files(models.Model):
     subsection = GenericForeignKey('subsection_type', 'subsection_id')
     title = models.CharField(max_length=255, verbose_name="Название файла", help_text="Название файла, отображаемое на сайте.")
     content = models.FileField(upload_to='uploads/', verbose_name="Содержание", help_text="Файл для загрузки, доступный для пользователей сайта.")
-    published = models.BooleanField(default=False, verbose_name="Опубликовано?", help_text="Отметьте, если файл готов к публикации и должен быть доступен на сайте.")
+    published = models.BooleanField(default=True, verbose_name="Опубликовано?", help_text="Отметьте, если файл готов к публикации и должен быть доступен на сайте.")
 
     class Meta:
         verbose_name = "Файл"
@@ -93,7 +93,7 @@ class SubSection(models.Model):
     section = models.IntegerField(verbose_name="Раздел", help_text="Номер раздела, к которому относится этот подраздел.")
     title = models.CharField(max_length=255, verbose_name="Название подраздела", help_text="Название подраздела, которое будет отображаться на сайте.")
     content = CKEditor5Field(verbose_name="Содержание", config_name='extends', help_text="Полный текст подраздела, отформатированный с помощью редактора.")
-    published = models.BooleanField(default=False, verbose_name="Опубликовано?", help_text="Отметьте, если подраздел должен быть доступен на сайте.")
+    published = models.BooleanField(default=True, verbose_name="Опубликовано?", help_text="Отметьте, если подраздел должен быть доступен на сайте.")
 
     class Meta:
         verbose_name = "Специалисты"
@@ -120,7 +120,7 @@ class Organization(models.Model):
     section = models.IntegerField(verbose_name="Раздел", help_text="Номер раздела, к которому относится организация.")
     title = models.CharField(max_length=255, verbose_name="Название подраздела", help_text="Название подраздела с информацией об организации.")
     content = CKEditor5Field(verbose_name="Содержание", config_name='extends', help_text="Полный текст подраздела, отформатированный с помощью редактора.")
-    published = models.BooleanField(default=False, verbose_name="Опубликовано?", help_text="Отметьте, если информация должна быть доступна на сайте.")
+    published = models.BooleanField(default=True, verbose_name="Опубликовано?", help_text="Отметьте, если информация должна быть доступна на сайте.")
 
     class Meta:
         verbose_name = "Организации"
@@ -134,7 +134,7 @@ class Materials(models.Model):
     section = models.IntegerField(verbose_name="Раздел", help_text="Номер раздела, связанного с материалами для аккредитации.")
     title = models.CharField(max_length=255, verbose_name="Название подраздела", help_text="Название подраздела с материалами для аккредитации.")
     content = CKEditor5Field(verbose_name="Содержание", config_name='extends', help_text="Полный текст подраздела, отформатированный с помощью редактора.")
-    published = models.BooleanField(default=False, verbose_name="Опубликовано?", help_text="Отметьте, если подраздел должен быть доступен на сайте.")
+    published = models.BooleanField(default=True, verbose_name="Опубликовано?", help_text="Отметьте, если подраздел должен быть доступен на сайте.")
 
     class Meta:
         verbose_name = "Для аккредитации"
@@ -148,7 +148,7 @@ class Base(models.Model):
     section = models.IntegerField(verbose_name="Раздел", help_text="Номер раздела, связанного с базой информации для специалистов.")
     title = models.CharField(max_length=255, verbose_name="Название подраздела", help_text="Название подраздела с информацией для специалистов.")
     content = CKEditor5Field(verbose_name="Содержание", config_name='extends', help_text="Полный текст подраздела, отформатированный с помощью редактора.")
-    published = models.BooleanField(default=False, verbose_name="Опубликовано?", help_text="Отметьте, если информация должна быть доступна на сайте.")
+    published = models.BooleanField(default=True, verbose_name="Опубликовано?", help_text="Отметьте, если информация должна быть доступна на сайте.")
 
     class Meta:
         verbose_name = "База"
