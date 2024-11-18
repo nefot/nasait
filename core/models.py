@@ -1,3 +1,4 @@
+import os
 from tkinter.constants import CASCADE
 
 from django.db import models
@@ -81,6 +82,11 @@ class Files(models.Model):
 
     def __str__(self):
         return self.title
+
+    # Новый метод для получения расширения файла
+    def get_extension(self):
+        return os.path.splitext(self.content.name)[1].lower()
+
 
 
 class SubSection(models.Model):

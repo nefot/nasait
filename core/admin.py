@@ -36,7 +36,7 @@ class BaseAdmin(admin.ModelAdmin):
 # Регистрируем саму модель Files без inline
 @admin.register(Files)
 class FilesAdmin(admin.ModelAdmin):
-    list_display = ('title', 'published')
+    list_display = ('id','title', 'published')
     list_filter = ('published',)
     search_fields = ('title',)
 

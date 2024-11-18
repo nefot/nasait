@@ -2,24 +2,95 @@ from django.shortcuts import render
 from django.shortcuts import render
 from core.models import SiteSettings
 from core.models import *
+from django.template import loader
+import re
+from django.utils.html import format_html
+
+
+def replace_file_tags(text):
+    # Регулярное выражение для поиска `[file:<id>]`
+    pattern = r'\[file:(\d+)\]'
+
+    def replace_match(match):
+        file_id = match.group(1)  # Получаем ID из совпадения
+        try:
+            document = Files.objects.get(id=file_id)  # Находим файл по ID
+            # Возвращаем HTML-ссылку на файл
+            return format_html('<a href="{}" download>{}</a>', document.file.url, document.title)
+        except Files.DoesNotExist:
+            return '[Файл не найден]'
+
+    # Заменяем все совпадения в тексте
+    return re.sub(pattern, replace_match, text)
 
 
 def home(request):
     return render(request, 'index.html')  # Главная страница
 
 
+
+
+
 def specialists(request):
     subsections = SubSection.objects.filter(published=True).order_by('section')
-    return render(request, 'specialists.html', {'subsections': subsections,'site_settings': SiteSettings.objects.first()})
+
+    # Подгружаем файлы для каждого подраздела
+    for subsection in subsections:
+        subsection.files = Files.objects.filter(
+            subsection_type=ContentType.objects.get_for_model(subsection),
+            subsection_id=subsection.id,
+            published=True
+        )
+
+    return render(request, 'specialists.html', {
+        'subsections': subsections,
+        'site_settings': SiteSettings.objects.first()
+    })
+
 
 def organisation(request):
     subsections = Organization.objects.filter(published=True).order_by('section')
-    return render(request, 'organizations.html', {'subsections': subsections,'site_settings': SiteSettings.objects.first()})
+
+    for subsection in subsections:
+        subsection.files = Files.objects.filter(
+            subsection_type=ContentType.objects.get_for_model(subsection),
+            subsection_id=subsection.id,
+            published=True
+        )
+
+    return render(request, 'organizations.html', {
+        'subsections': subsections,
+        'site_settings': SiteSettings.objects.first()
+    })
+
+
 def legal_framework(request):
     subsections = Base.objects.filter(published=True).order_by('section')
-    return render(request, 'legal_framework.html', {'subsections': subsections,'site_settings': SiteSettings.objects.first()})
+
+    for subsection in subsections:
+        subsection.files = Files.objects.filter(
+            subsection_type=ContentType.objects.get_for_model(subsection),
+            subsection_id=subsection.id,
+            published=True
+        )
+
+    return render(request, 'legal_framework.html', {
+        'subsections': subsections,
+        'site_settings': SiteSettings.objects.first()
+    })
+
+
 def reference_materials(request):
     subsections = Materials.objects.filter(published=True).order_by('section')
-    return render(request, 'reference_materials.html', {'subsections': subsections,'site_settings': SiteSettings.objects.first()})
-# news/views.py
 
+    for subsection in subsections:
+        subsection.files = Files.objects.filter(
+            subsection_type=ContentType.objects.get_for_model(subsection),
+            subsection_id=subsection.id,
+            published=True
+        )
+
+    return render(request, 'reference_materials.html', {
+        'subsections': subsections,
+        'site_settings': SiteSettings.objects.first()
+    })

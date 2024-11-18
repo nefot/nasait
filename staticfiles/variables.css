@@ -1,6 +1,6 @@
 /* Цвета */
 :root {
-    --main-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --main-font:"Poppins", sans-serif;
     --primary-color: #3b3c8d;
     ---border-bottom-colors: #6064b2V;
     --secondary-color: #4c50a1;
