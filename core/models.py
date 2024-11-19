@@ -43,7 +43,7 @@ class Announcement(models.Model):
 class News(models.Model):
     title = models.CharField(max_length=200, verbose_name="Заголовок", help_text="Основной заголовок новости, который будет отображаться на сайте.")
     description = models.TextField(verbose_name="Описание", help_text="Полный текст новости, включающий все важные детали.")
-    image = models.ImageField(upload_to='news_images/', blank=True, null=True, verbose_name="Изображение", help_text="Загрузите изображение, представляющее новость.")
+    image = models.ImageField(upload_to='news_images/', null=True, verbose_name="Изображение", help_text="Загрузите изображение, представляющее новость.")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата публикации", help_text="Дата и время публикации новости.")
 
     class Meta:
@@ -57,7 +57,7 @@ class News(models.Model):
 class Events(models.Model):
     title = models.CharField(max_length=200, verbose_name="Заголовок", help_text="Основной заголовок события, который будет отображаться на сайте.")
     description = models.TextField(verbose_name="Описание", help_text="Полное описание события с деталями и важной информацией.")
-    image = models.ImageField(upload_to='event_images/', blank=True, null=True, verbose_name="Изображение", help_text="Загрузите изображение, представляющее событие.")
+    image = models.ImageField(upload_to='event_images/', null=True, verbose_name="Изображение", help_text="Загрузите изображение, представляющее событие.")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата публикации", help_text="Дата и время публикации события.")
 
     class Meta:
@@ -106,7 +106,7 @@ class SubSection(models.Model):
 class Announcement(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок", help_text="Основной заголовок анонса. Будет отображаться на сайте.")
     description = models.TextField(verbose_name="Описание", help_text="Полное описание анонса, содержащее все основные сведения.")
-    image = models.ImageField(upload_to='announcements/', null=True, blank=True, verbose_name="Изображение", help_text="Загрузите изображение, которое будет представлять анонс.")
+    image = models.ImageField(upload_to='announcements/', null=True, verbose_name="Изображение", help_text="Загрузите изображение, которое будет представлять анонс.")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания", help_text="Дата и время, когда анонс был создан.")
 
     class Meta:
