@@ -23,7 +23,6 @@
 
                         {{ subsection.content|safe }}
                            {% if subsection.files.exists %}
-                        <h3>Связанные файлы:</h3>
                         <ul>
                             {% for file in subsection.files %}
                                 <li>
