@@ -16,6 +16,11 @@ class FilesInline(GenericTabularInline):
     extra = 1
 
 
+@admin.register(Page)
+class PageAdmin(admin.ModelAdmin):
+    list_display = ('slug', 'title', 'section')
+
+
 @admin.register(SubSection)
 class SectionAdmin(admin.ModelAdmin):
     inlines = [FilesInline]

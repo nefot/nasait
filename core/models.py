@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django_ckeditor_5.fields import CKEditor5Field
+from django.urls import reverse
 
 
 class SingletonModel(models.Model):
@@ -151,6 +152,47 @@ class Files(models.Model):
         return os.path.splitext(self.content.name)[1].lower()
 
 
+class Page(models.Model):
+    section = models.IntegerField(
+        verbose_name="Раздел",
+        help_text="Номер раздела, к которому относится этот подраздел."
+    )
+    title = models.CharField(
+        max_length=255,
+        verbose_name="Название подраздела",
+        help_text="Название подраздела, которое будет отображаться на сайте."
+    )
+    content = CKEditor5Field(
+        verbose_name="Содержание",
+        config_name='extends',
+        help_text="Полный текст подраздела, отформатированный с помощью редактора."
+    )
+    published = models.BooleanField(
+        default=True,
+        verbose_name="Опубликовано?",
+        help_text="Отметьте, если подраздел должен быть доступен на сайте."
+    )
+    slug = models.SlugField(
+        max_length=255,
+        unique=True,
+        verbose_name="URL",
+        help_text="Автоматически создаётся из названия подраздела."
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            from django.utils.text import slugify
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("subsection_detail", kwargs={"slug": self.slug})
+
+    class Meta:
+        verbose_name = "Подраздел"
+        verbose_name_plural = "Подразделы"
+
+
 class SubSection(models.Model):
     section = models.IntegerField(
         verbose_name="Раздел",
@@ -294,6 +336,8 @@ class OrganizationMedicalPrevention(models.Model):
 
     def __str__(self):
         return self.title
+
+
 class SiteSettings(models.Model):
     main_title = models.CharField(
         max_length=100,

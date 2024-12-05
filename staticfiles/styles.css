@@ -42,9 +42,10 @@ header {
 }
 
 .logo {
+    display: flex;
     font-size: 1.5em;
     font-weight: 700;
-    padding: 0 50px;
+    padding: 0 20px;
 }
 
 nav ul {
@@ -820,4 +821,9 @@ ul.dropdown-menu :hover {
 
 a.grid-item.flip-card {
     color: #ffffff;
+}
+
+.ds > .logo > img {
+    height: 50px;
+    margin: auto;
 }

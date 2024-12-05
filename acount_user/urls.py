@@ -2,6 +2,8 @@ from django.urls import path
 from . import views  # Импортируем views из вашего приложения
 
 urlpatterns = [
+    path('subsection/<slug:slug>/', views.SubsectionDetailView.as_view(), name='subsection_detail'),
+
     # path('', views.home, name='home'),  # Главная страница
     path('news-detail/', views.news_detail, name='news_detail'),
     path('specialists/', views.specialists, name='specialists'),

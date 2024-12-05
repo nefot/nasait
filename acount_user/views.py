@@ -6,6 +6,14 @@ from django.template import loader
 import re
 from django.utils.html import format_html
 
+from django.views.generic import DetailView
+from core.models import Page
+
+
+class SubsectionDetailView(DetailView):
+    model = Page
+    template_name = "subsection_detail.html"
+
 
 def replace_file_tags(text):
     # Регулярное выражение для поиска `[file:<id>]`
