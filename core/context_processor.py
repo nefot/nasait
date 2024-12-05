@@ -1,4 +1,4 @@
-# # yourapp/context_processors.py
+p# # yourapp/context_processors.py
 #  # Обработка случая, если нет настроек
 # from core.models import SiteSettings
 #

@@ -1,6 +1,6 @@
-/* Цвета */
+
 :root {
-    --main-font:"Poppins", sans-serif;
+    --main-font: "Nunito", sans-serif;
     --primary-color: #3b3c8d;
     ---border-bottom-colors: #6064b2V;
     --secondary-color: #4c50a1;
@@ -8,13 +8,16 @@
     --background-color: #ffffff;
     --text-color: #252525;
     --light-background: #ffffff;
-    --border-color:#afafaf ;
+    --border-color: #afafaf;
 }
 
 /* Общие стили */
 *,
 *::before,
 *::after {
+    /*font-optical-sizing: auto;*/
+
+    font-style: normal;
     margin: 0;
     padding: 0;
     box-sizing: border-box;

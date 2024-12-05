@@ -28,8 +28,6 @@ def home(request):
     return render(request, 'index.html')  # Главная страница
 
 
-
-
 def specialists(request):
     subsections = SubSection.objects.filter(published=True).order_by('section')
 
@@ -59,6 +57,23 @@ def organisation(request):
         )
 
     return render(request, 'organizations.html', {
+        'subsections': subsections,
+        'site_settings': SiteSettings.objects.first()
+    })
+
+
+def organization_medical_prevention(request):
+    subsections = Organization.objects.filter(published=True).order_by('section')
+
+    # Привязка файлов к каждому подразделу
+    for subsection in subsections:
+        subsection.files = Files.objects.filter(
+            subsection_type=ContentType.objects.get_for_model(Organization),
+            subsection_id=subsection.id,
+            published=True
+        )
+
+    return render(request, 'orgia.html', {
         'subsections': subsections,
         'site_settings': SiteSettings.objects.first()
     })
@@ -96,3 +111,7 @@ def reference_materials(request):
         'subsections': subsections,
         'site_settings': SiteSettings.objects.first()
     })
+
+
+def news_detail(request):
+    return render(request, 'news_page.html')
