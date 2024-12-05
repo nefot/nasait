@@ -91,7 +91,7 @@ class SiteSettingsAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ("Основные настройки", {
-            'fields': ('site_name', 'main_title', 'subtitle', 'logo')
+            'fields': ('site_name', 'main_title', 'subtitle', 'logo', 'mini_logo')
         }),
         ("Блоки контента", {
             'fields': ('block1_name', 'block2_name', 'block3_name')

@@ -373,6 +373,13 @@ class SiteSettings(models.Model):
         upload_to='settings/',
         blank=True,
         null=True,
+        verbose_name="Логотип ",
+        help_text="логотип на главную страницу"
+    )
+    mini_logo = models.ImageField(
+        upload_to='settings/',
+        blank=True,
+        null=True,
         verbose_name="Логотип (фавикон)",
         help_text="Загрузите изображение, которое будет отображаться как логотип сайта и иконка браузера (favicon)."
     )
