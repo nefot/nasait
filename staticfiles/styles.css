@@ -61,12 +61,11 @@ nav ul li {
 nav ul li a {
     background-image: linear-gradient(to right, #ffffff, #ffffff); /* Параметры градиента */
     background-repeat: no-repeat; /* Фон не повторяется */
-    background-size: 10px 2px; /* Линия будет шириной 10px и высотой 2px */
+    /* Линия будет шириной 10px и высотой 2px */
     background-position: left bottom; /* Положение в левом нижнем углу */
     padding-bottom: 4px; /* Расстояние от текста до линии */
     text-decoration: none; /* Убираем подчёркивание */
-    transition: 0.3s; /* Время перехода */
-    text-decoration: none !important;
+    /* Время перехода */
     color: white;
     transition: background-size 0.3s ease-out;
     background-size: 0 2px;
@@ -74,6 +73,7 @@ nav ul li a {
 
 nav ul li a:hover {
     color: var(--accent-color);
+    text-decoration: none;
 }
 
 .auth a {
@@ -95,7 +95,7 @@ nav ul li a:hover {
     position: absolute;
     display: flex;
     z-index: 1;
-    box-shadow: inset 0 0 200px 0px #00000052;
+    box-shadow: inset 0 0 200px 0 #00000052;
     /* flex-direction: column; */
     align-items: center;
     justify-content: space-between;
@@ -307,14 +307,12 @@ footer.row.row-cols-1.row-cols-sm-2.row-cols-md-5.py-5.my-5.border-top.content {
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
     z-index: 1;
 }
 
-.dropdown:hover .dropdown-content {
-    display: blQock;
-}
+
 
 .flip-card-back img {
     width: 40%;
@@ -357,7 +355,7 @@ body {
 
 .card-wrapper {
     width: 1100px;
-    margin: 0px 51px 15px;
+    margin: 0 51px 15px;
     padding: 20px 10px;
     overflow: hidden;
 }
@@ -369,19 +367,17 @@ body {
 .card-list .card-item .card-link {
     user-select: none;
     display: block;
-
     background: var(--background-color);
     /*padding: 18px;*/
     border-radius: 5px;
     text-decoration: none;
-    border: 1px solid var(--border-color);
+    border: 1px solid #dbd6d6;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
     transition: 0.2s ease;
-
 }
 
 .card-list .card-item .card-link:hover {
-    border-color: var(--secondary-color);
+    border-color: #007aff;
 }
 
 
@@ -415,30 +411,36 @@ body {
     width: 100%;
     white-space: normal !important;
     color: #252525;
-    padding: 8px 16px;
+    /* padding: 8px 16px; */
     font-weight: normal;
 }
 
 .card-list .card-link .card-button {
     height: 35px;
+    background: #007aff;
+    color: var(--background-color);
     /* padding: 8px 16px; */
+    position: absolute;
+    bottom: 7px;
+    right: 8px;
     /*width: 35px;*/
-    margin: auto;
     text-align: center;
     border-radius: 5px;
-    background: none;
+    /* background: none; */
     margin: 8px 16px;
     cursor: pointer;
     /* padding: 10px; */
-    border: 2px solid var(--secondary-color);
-    color: var(--secondary-color);
+    border: 2px solid #007aff;
+    /* color:  #007aff; */
     /*transform: rotate(-45deg);*/
 }
 
 .card-list .card-link:hover .card-button {
-    background: var(--secondary-color);
-    color: var(--background-color);
-
+    /* background:  #007aff; */
+    /* color: var(--background-color); */
+    /* border: 2px solid #007aff; */
+    background: none;
+    color: #ffffff;
 }
 
 .card-list .card-link .card-button p {
@@ -446,7 +448,10 @@ body {
     display: block;
     text-align: center;
     margin: auto 10px;
-    padding: auto;
+    /* font-size: 16px; */
+    font-weight: 700;
+
+    letter-spacing: -.4px;
 }
 
 
@@ -553,7 +558,7 @@ li.cpec_item > a {
 }
 
 li.cpec_item {
-    letter-spacing: 1;
+
     background-color: #f0f8ff;
     font-size: small;
     text-transform: uppercase;
@@ -826,4 +831,46 @@ a.grid-item.flip-card {
 .ds > .logo > img {
     height: 50px;
     margin: auto;
+}
+.auth {
+    width: 326px;
+    text-align-last: center;
+}
+
+a.card-link {
+    height: 450px;
+}
+.card-title {
+
+  padding: 1rem;
+  width: 200px;
+  height: 170px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(180deg, transparent, #ffffff 50%);
+}
+
+
+.card-list .card-item .card-link:hover button>p {
+    color: #007aff;
+}
+
+.simple {
+    /* background-color: #eceef2; */
+    /* border-radius: 20px; */
+}
+
+.simple {}
+
+section {
+    background-color: #eceef2;
 }
