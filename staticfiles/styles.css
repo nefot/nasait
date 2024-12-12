@@ -516,7 +516,7 @@ h3.dop {
     width: 100%;
     float: left;
     min-height: 93vh;
-    background-color: #e9eef2;
+    background-color: #f0f8ff;
     /* padding: 40px 0; */
     /* line-height: 3; */
     display: flex;
@@ -529,8 +529,10 @@ h3.dop {
 }
 
 ul.cpec_content {
-    background-color: #f0f8ff;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+    border: solid 1px #d3dee9;
+    max-width: 20%;
+    background-color: #e3ecf5;
+    /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05); */
 }
 
 footer.row.row-cols-1.row-cols-sm-2.row-cols-md-5.py-5.my-5.border-top.content {
@@ -568,12 +570,13 @@ li.cpec_item > a {
 }
 
 li.cpec_item {
-
-    background-color: #f0f8ff;
+    background-color: #e8f1f9;
     font-size: small;
+    /* border-radius: 20px; */
+    margin-bottom: 5px;
     text-transform: uppercase;
     /* border: solid; */
-    border-bottom: solid 1px #abb5be;
+    /* border-bottom: solid 1px #abb5be; */
     border-image: linear-gradient(to left, #eadede, #90acaa, #6A9393, #ffffff) 14% 0;
     /* transition: background-color 1s; */
     /* transition: background-color cubic-bezier(0, 0, 0.2, 1) .5s; */
@@ -585,11 +588,12 @@ li.cpec_item:hover {
 }
 
 li.cpec_item.-current {
-    background-color: #ff5b5b;
+    background-color: #f0f8ff;
     /* margin-bottom: 391px; */
     box-shadow: 0 10px 10px 0px rgb(212 212 212 / 70%);
     /* z-index: 100; */
-    color: white;
+    color: #000000 ! i;
+    !;
     /* position: absolute; */
     transition: background-color .2s;
 }
@@ -735,14 +739,17 @@ li.cpec_item:active {
 }
 
 li.cpec_item.-current > a {
-    color: #ffffff !important;
+    color: #000000 !important;
     font-weight: 600;
 }
 
 a {
 }
 
-.content-block {
+.content-block * > a:hover {
+    color: black !important;
+    ! i;
+    !;
 }
 
 .content-block > .content-item > p > a {
@@ -911,6 +918,11 @@ section {
 }
 
 
-.bg-gray{
+.bg-gray {
     background-color: #e5e5f5;
 }
+
+/*.content-block * {*/
+/*    font-family: 'STIX Two Text', 'sans-serif';*/
+/*    letter-spacing: 0.4px;*/
+/*}*/
